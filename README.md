@@ -35,7 +35,7 @@ Get started in three simple steps:
 Download a copy of the app with `git clone`. Be sure to pass the `--recurse-submodules` argument to initialise and update each submodule in the repository.
 
 ```shell
-git clone --recurse-submodules https://github.com/kurtcms/docker-compose-wordpress-nginx-mysql ./
+git clone --recurse-submodules https://github.com/oplad/docker-compose-wordpress-nginx-mysql ./
 ```
 
 ### Environment Variables
