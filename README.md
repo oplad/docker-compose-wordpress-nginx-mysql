@@ -35,7 +35,7 @@ Get started in three simple steps:
 Download a copy of the app with `git clone`. Be sure to pass the `--recurse-submodules` argument to initialise and update each submodule in the repository.
 
 ```shell
-$ git clone --recurse-submodules https://github.com/kurtcms/docker-compose-wordpress-nginx-mysql ./
+git clone --recurse-submodules https://github.com/kurtcms/docker-compose-wordpress-nginx-mysql ./
 ```
 
 ### Environment Variables
@@ -45,7 +45,7 @@ Docker Compose expects the MySQL root password, the WordPress database name, use
 Be sure to create the `.env` file.
 
 ```shell
-$ nano ./.env
+nano ./.env
 ```
 
 And define the variables accordingly.
@@ -69,7 +69,7 @@ With Docker Compose, the app may be provisioned with a single command.
 Install [Docker](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) with the [Bash](https://github.com/gitGNU/gnu_bash) script that comes with app.
 
 ```shell
-$ chmod +x ./docker-compose/docker-compose.sh \
+chmod +x ./docker-compose/docker-compose.sh \
     && ./docker-compose/docker-compose.sh
 ```
 
@@ -80,7 +80,7 @@ A dummy SSL/TLS certificate and private key will need to be created for NGINX to
 Create the dummy certificate before obtaining a signed one with the Bash script that comes with app.
 
 ```shell
-$ chmod +x ./certbot/certbot.sh \
+chmod +x ./certbot/certbot.sh \
     && ./certbot/certbot.sh
 ```
 
@@ -91,13 +91,13 @@ Enter the root domain and the email address for registration and recovery when p
 Start the containers with Docker Compose.
 
 ```shell
-$ docker-compose -f ./docker-compose.yml up -d
+docker-compose -f ./docker-compose.yml up -d
 ```
 
 Stopping the containers is as simple as a single command.
 
 ```shell
-$ docker-compose -f ./docker-compose.yml down
+docker-compose -f ./docker-compose.yml down
 ```
 
 ## Backup and Restore
@@ -125,7 +125,7 @@ MySQL comes with a tool for [logical backup](https://dev.mysql.com/doc/refman/8.
 Back up an existing MySQL database in a container.
 
 ```shell
-$ docker exec -it mysql mysqldump \
+docker exec -it mysql mysqldump \
     --user root \
     --password \
     kurtcms_org > kurtcms_org.sql
@@ -134,7 +134,7 @@ $ docker exec -it mysql mysqldump \
 Restore a database from an existing backup.
 
 ```shell
-$ docker exec -it mysql mysql \
+docker exec -it mysql mysql \
     --user root \
     --password \
     kurtcms_org < kurtcms_org.sql
@@ -147,14 +147,14 @@ WordPress plugins and themes, as well as media files uploaded by users are house
 Making a copy of the `wp-content` directory.
 
 ```shell
-$ cp -r /var/lib/docker/volumes/docker-compose-wordpress-nginx-mysql_wordpress/_data/wp-content \
+cp -r /var/lib/docker/volumes/docker-compose-wordpress-nginx-mysql_wordpress/_data/wp-content \
     ./
 ```
 
 Restoring it from an existing backup.
 
 ```shell
-$ cp -r ./wp-content/ \
+cp -r ./wp-content/ \
     /var/lib/docker/volumes/docker-compose-wordpress-nginx-mysql_wordpress/_data/
 ```
 
@@ -167,7 +167,7 @@ NGINX is instructed to reload its configuration every 24 hours to ensure the ren
 Edit the `docker-compose.yml` should these intervals need to be adjusted.
 
 ```shell
-$ nano ./docker-compose.yml
+nano ./docker-compose.yml
 ```
 
 Modify the values as appropriate.
